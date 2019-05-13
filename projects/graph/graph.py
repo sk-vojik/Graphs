@@ -99,14 +99,19 @@ class Graph:
         q = Queue()
         path = set()
         q.enqueue(starting_vertex)
-        while q.size() > 0:
+        found = False
+        while found == False:
             v = q.dequeue()
-            if v != destination_vertex:
+            if v not in path and v != destination_vertex:
+                # print(v)
                 path.add(v)
                 for neighbor in self.vertices[v]:
                     q.enqueue(neighbor)
             else:
-                return path
+                found == True
+                path.add(v)
+                print(path)
+                return 
 
     def dfs(self, starting_vertex, destination_vertex):
         """
@@ -199,11 +204,12 @@ if __name__ == '__main__':
     Valid BFS path:
         [1, 2, 4, 6]
     '''
-    # print(graph.bfs(1, 6))
+    graph.bfs(1, 6)
 
     '''
     Valid DFS paths:
         [1, 2, 4, 6]
         [1, 2, 4, 7, 6]
     '''
-    print(graph.dfs(1, 6))
+    print("--------")
+    graph.dfs(1, 6)
