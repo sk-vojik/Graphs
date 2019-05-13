@@ -26,14 +26,6 @@ class Graph:
         beginning from starting_vertex.
         """
         
-        #create an empty queue
-        #Create an empty visited set
-        #add the starting vertex to the queue
-        #while the queue is not empty...
-          #dequeue the first vertex
-          #if it has not been visited
-            #mark it as visited (print and add to the visited set)
-            #enque each of its neighbors
       #create an empty queue
       q = Queue()
       #Create an empty visited set
@@ -43,7 +35,15 @@ class Graph:
       #While the queue is not empty
       while q.size() > 0:
         #dequeue the first vertex
-        v = q.dequeue
+        v = q.dequeue()
+        #If it has not been visited:
+        if v not in visited:
+          #mark it as visited (print and add to the visited set)
+          print(v)
+          visited.add(v)
+            #enque each of its neighbors
+          for neighbor in self.vertices[v]:
+            q.enqueue(neighbor)
          
 
 
@@ -52,7 +52,28 @@ class Graph:
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # DFT
+        # Create an empty Stack
+        s = Stack()
+        # Create an empty Visited set
+        visited = set()
+        # Push the starting vertex to the stack
+        s.push(starting_vertex)
+        # While the Stack is not empty...
+          while s.size() > 0
+          # Pop the first vertex
+          v = s.pop()
+          # If it has not been visited...
+          if v not in visited:
+            # Mark it as visited (print it and add it to the visited set)
+            print(v)
+            visted.add(v)
+            # Then push each of its neighbors onto the Stack
+            for neighbor in self.vertices[v]:
+              s.push(neighbor)
+      
+
+
     def dft_recursive(self, starting_vertex):
         """
         Print each vertex in depth-first order
