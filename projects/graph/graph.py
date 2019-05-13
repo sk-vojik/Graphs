@@ -11,18 +11,42 @@ class Graph:
         """
         Add a vertex to the graph.
         """
-        pass  # TODO
+        self.vertices[vertex] = set()
     def add_edge(self, v1, v2):
         """
         Add a directed edge to the graph.
         """
-        pass  # TODO
+        if v1 in self.vertices and v2 in self.vertices:
+          self.vertices[v1].add(v2)
+        else:
+          raise IndexError("That vertex does not exist!")
     def bft(self, starting_vertex):
         """
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        
+        #create an empty queue
+        #Create an empty visited set
+        #add the starting vertex to the queue
+        #while the queue is not empty...
+          #dequeue the first vertex
+          #if it has not been visited
+            #mark it as visited (print and add to the visited set)
+            #enque each of its neighbors
+      #create an empty queue
+      q = Queue()
+      #Create an empty visited set
+      visted = set()
+      #Add the starting vertex to the queue
+      q.enqueue(starting_vertex)
+      #While the queue is not empty
+      while q.size() > 0:
+        #dequeue the first vertex
+        v = q.dequeue
+         
+
+
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
