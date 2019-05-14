@@ -1,8 +1,10 @@
+import random
 
 
 class User:
     def __init__(self, name):
         self.name = name
+
 
 class SocialGraph:
     def __init__(self):
@@ -47,8 +49,21 @@ class SocialGraph:
         # !!!! IMPLEMENT ME
 
         # Add users
-
+        for i in range(numUsers):
+            self.addUser(f"User {i + 1}")
         # Create friendships
+
+        #avgFriendships = totalFriendships / numUsers
+        #totalFriendships = avgFriendships * numUsers
+        possibleFriendships = []
+        for userId in self.users:
+            for friendID in range(userId + 1, self.lastID + 1):
+                possibleFriendships.append((userId, friendID))
+        random.shuffle(possibleFriendships)
+        for friendship_index in range(avgFriendships * numUsers // 2):
+            friendship = possibleFriendships[friendship_index]
+            self.addFriendship(friendship[0], friendship[1])
+        print(possibleFriendships)
 
     def getAllSocialPaths(self, userID):
         """
@@ -59,8 +74,28 @@ class SocialGraph:
 
         The key is the friend's ID and the value is the path.
         """
-        visited = {}  # Note that this is a dictionary, not a set
-        # !!!! IMPLEMENT ME
+
+        queue = [userID]
+
+        # paths need to reach vertices
+        visited = {userID: [userID]
+                   }  # Note that this is a dictionary, not a set\
+        # # !!!! IMPLEMENT ME
+
+        while len(queue) > 0:
+
+            # add edges to queue
+            for i in self.friendships[queue[0]]:
+
+                # if vertex has not been visited, add to visited
+                if i not in visited:
+                    visited[i] = list(visited[queue[0]])
+                    visited[i].append(i)
+                    queue.append(i)
+
+            # remove last item checked
+            queue.pop(0)
+
         return visited
 
 
